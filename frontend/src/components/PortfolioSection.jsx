@@ -63,11 +63,13 @@ export default function PortfolioSection() {
     <section
       id="portfolio"
       style={{
-        background: "#00081a",
-        padding: "120px 20px",
+        // background: "rgba(0,10,30,1)",
+        // padding: "120px 20px 60px", // 🔹 reduced bottom padding for smooth join
         textAlign: "center",
+        marginBottom: "0", // 🔹 ensure no gap
       }}
     >
+      {/* Section Title */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -82,6 +84,7 @@ export default function PortfolioSection() {
         Our Expertise
       </motion.h2>
 
+      {/* Grid Cards */}
       <div
         style={{
           display: "grid",
@@ -116,7 +119,7 @@ export default function PortfolioSection() {
               transition: "transform 0.4s ease, box-shadow 0.4s ease",
             }}
           >
-            {/* Image */}
+            {/* Background Image */}
             <img
               src={p.img}
               alt={p.title}
@@ -132,7 +135,7 @@ export default function PortfolioSection() {
               }}
             />
 
-            {/* Overlay */}
+            {/* Overlay Text */}
             <div
               style={{
                 position: "relative",
@@ -171,6 +174,17 @@ export default function PortfolioSection() {
           </motion.div>
         ))}
       </div>
+
+      {/* Optional Smooth Fade to Next Section */}
+      <div
+        style={{
+          width: "100%",
+          height: "100px",
+          background:
+            "linear-gradient(180deg, rgba(0,8,26,0) 0%, #00081a 100%)", // 🔹 same color fade
+          marginTop: "0",
+        }}
+      ></div>
     </section>
   );
 }

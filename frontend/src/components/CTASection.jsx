@@ -34,10 +34,11 @@ export default function CTASection() {
         width: "100%",
         background: "#001125",
         color: "#fff",
-        padding: "120px 40px 100px",
+        padding: "150px 60px 120px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: "-180px", // slight overlap for seamless transition
       }}
     >
       {/* ---------- TOP CONTENT ---------- */}

@@ -24,30 +24,34 @@ export default function Testimonials() {
     <section
       id="testimonials"
       style={{
-        background: "#00081a",
-        padding: "140px 20px",
+        // background: "#00081a", // ✅ add back solid background to hide shadow
+        padding: "0 20px 140px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        // position: "relative",
+        marginTop: "-50px",
+        overflow: "hidden", // prevent inner shadows from bleeding out
       }}
     >
-      {/* Background glow effect */}
+      {/* Background glow */}
       <div
         style={{
           position: "absolute",
-          top: 0,
+          top: "0",
           left: "50%",
           transform: "translateX(-50%)",
-          width: "800px",
+          width: "900px",
           height: "800px",
           background:
-            "radial-gradient(circle, rgba(0,100,255,0.25) 0%, rgba(0,0,0,0) 70%)",
+            "radial-gradient(circle, rgba(0,120,255,0.25) 0%, rgba(0,0,0,0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
         }}
       ></div>
 
+      {/* Content */}
       <div
         style={{
           position: "relative",
@@ -58,7 +62,7 @@ export default function Testimonials() {
           color: "#fff",
         }}
       >
-        {/* Top Tag */}
+        {/* Section Tag */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +82,7 @@ export default function Testimonials() {
           TESTIMONIALS
         </motion.p>
 
-        {/* Main Heading */}
+        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -87,9 +91,10 @@ export default function Testimonials() {
             fontSize: "54px",
             fontWeight: "700",
             marginBottom: "90px",
+            color: "#fff",
           }}
         >
-          First impression,
+          First impression,{" "}
           <span
             style={{
               background: "linear-gradient(90deg, #3cb7ff, #7dd3fc)",
@@ -97,12 +102,11 @@ export default function Testimonials() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            {" "}
             our clients
           </span>
         </motion.h2>
 
-        {/* Testimonials Cards */}
+        {/* Cards */}
         <div
           style={{
             display: "flex",
@@ -118,18 +122,22 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 15px 40px rgba(0,150,255,0.3)",
+              }}
               style={{
                 flex: "1",
                 minWidth: "420px",
                 maxWidth: "540px",
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
+                background: "rgba(255,255,255,0.05)",
                 borderRadius: "18px",
                 padding: "50px 40px",
                 textAlign: "left",
                 boxShadow:
-                  "inset 0 0 40px rgba(255,255,255,0.02), 0 10px 40px rgba(0,0,0,0.4)",
-                backdropFilter: "blur(10px)",
+                  "0 10px 30px rgba(0,0,0,0.4), inset 0 0 30px rgba(255,255,255,0.05)",
+                backdropFilter: "blur(8px)",
+                transition: "0.4s ease",
               }}
             >
               {/* Stars */}

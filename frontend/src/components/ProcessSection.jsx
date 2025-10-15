@@ -25,59 +25,62 @@ export default function ProcessSection() {
     <section
       id="process"
       style={{
-        background: "#00081a",
-        padding: "140px 0",
+        // background: "rgba(0,10,30,1)", // 👈 same as previous section
+        padding: "0px 0 120px", // 👈 zero top padding, fixes visible gap
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "0",
+        // position: "relative",
+        zIndex: 1,
       }}
     >
+      {/* 🔹 Smooth blend with previous section */}
+      {/* <div
+        style={{
+          position: "absolute",
+          top: "-80px",
+          left: 0,
+          width: "100%",
+          height: "100px",
+          // background:
+          //   "linear-gradient(180deg, #00081a 0%, rgba(0,8,26,0.8) 50%, rgba(0,8,26,1) 100%)",
+          zIndex: 0,
+        }}
+      ></div> */}
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         style={{
-          width: "90%",
+          width: "100%",
           maxWidth: "1250px",
-          borderRadius: "28px",
-          padding: "80px 70px 100px",
+          borderRadius: "24px",
+          padding: "100px 70px",
           textAlign: "center",
           color: "#fff",
           position: "relative",
           overflow: "hidden",
           background:
-            "linear-gradient(180deg, rgba(10,25,60,1) 0%, rgba(0,15,40,1) 60%, rgba(0,10,30,1) 100%)",
+            "linear-gradient(180deg, rgba(10,25,60,0.7) 0%, rgba(0,15,40,1) 60%, rgba(0,10,30,1) 100%)",
           boxShadow:
-            "inset 0 0 80px rgba(0,0,0,0.7), 0 10px 40px rgba(0,0,0,0.4)",
+            "0 0 60px rgba(0, 180, 255, 0.05), inset 0 0 80px rgba(0,0,0,0.6)",
+          backdropFilter: "blur(6px)",
         }}
       >
-        {/* Pointer triangle on top */}
+        {/* Glow effect background */}
         <div
           style={{
             position: "absolute",
-            top: "-25px",
+            bottom: "-150px",
             left: "50%",
             transform: "translateX(-50%)",
-            width: "0",
-            height: "0",
-            borderLeft: "18px solid transparent",
-            borderRight: "18px solid transparent",
-            borderBottom: "25px solid rgba(10,25,60,1)",
-          }}
-        />
-
-        {/* Background bottom glow */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-180px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "900px",
+            width: "800px",
             height: "700px",
             background:
-              "radial-gradient(circle, rgba(0,160,255,0.35) 0%, rgba(0,0,0,0) 70%)",
-            filter: "blur(120px)",
+              "radial-gradient(circle, rgba(0,160,255,0.3) 0%, rgba(0,0,0,0) 70%)",
+            filter: "blur(100px)",
             zIndex: 1,
           }}
         />
@@ -86,7 +89,7 @@ export default function ProcessSection() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <p
             style={{
-              background: "rgba(255,255,255,0.1)",
+              background: "rgba(255,255,255,0.08)",
               display: "inline-block",
               color: "#7dd3fc",
               fontWeight: "600",
@@ -102,7 +105,7 @@ export default function ProcessSection() {
 
           <h2
             style={{
-              fontSize: "58px",
+              fontSize: "56px",
               fontWeight: "700",
               margin: "0 0 18px",
               background: "linear-gradient(90deg, #3cb7ff, #7dd3fc)",
@@ -133,9 +136,9 @@ export default function ProcessSection() {
             position: "relative",
             zIndex: 3,
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "flex-start",
-            flexWrap: "nowrap",
+            flexWrap: "wrap",
             gap: "60px",
           }}
         >
@@ -147,11 +150,21 @@ export default function ProcessSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               style={{
                 flex: "1",
-                minWidth: "0",
-                maxWidth: "370px",
+                minWidth: "300px",
+                maxWidth: "360px",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "flex-start",
+                alignItems: "center",
+                textAlign: "center",
+                background: "rgba(255, 255, 255, 0.05)",
+                borderRadius: "18px",
+                padding: "30px 24px",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                transition: "0.4s ease",
+              }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 15px 40px rgba(0,150,255,0.3)",
               }}
             >
               <div
@@ -161,7 +174,7 @@ export default function ProcessSection() {
                   borderRadius: "50%",
                   padding: "12px",
                   marginBottom: "18px",
-                  boxShadow: "0 0 25px rgba(0,200,255,0.3)",
+                  boxShadow: "0 0 25px rgba(0,200,255,0.4)",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -173,7 +186,7 @@ export default function ProcessSection() {
                 style={{
                   fontWeight: "600",
                   fontSize: "18px",
-                  marginBottom: "12px",
+                  marginBottom: "10px",
                   color: "#fff",
                 }}
               >

@@ -135,9 +135,9 @@ export default function HeroSection() {
         /* TRUSTED CLIENTS */
         .trusted-section {
           position: relative;
-          margin-top: 60px; 
           z-index: 3;
-          margin-top: 80px;
+           margin-top: 80px;
+           margin-bottom: 100px;
           width: 100%;
         }
 
@@ -153,7 +153,7 @@ export default function HeroSection() {
           gap: 60px;
           width: max-content;
           align-items: center;
-          margin: 0 auto;
+          // margin: 0 auto;
         }
 
         .logo-img {

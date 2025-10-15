@@ -93,13 +93,13 @@ header {
 }
 
 /* ============ FIXED HERO SECTION ============ */
-.hero-section {
+/* .hero-section {
     width: 100%;
     min-height: 100vh;
     min-height: 100vh;
     margin-bottom: 0 !important;
     /* removes section separation */
-    padding-bottom: 0 !important;
+/* padding-bottom: 0 !important;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -111,7 +111,7 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     animation: gradientFlow 20s ease-in-out infinite;
-}
+} */
 
 @keyframes gradientFlow {
     0% {
@@ -219,7 +219,7 @@ header {
 /* ============ TRUSTED CLIENTS (instudio clone) ============ */
 
 .clients-inner {
-    background: #00081a;
+    /* background: #00081a; */
     padding: 120px 20px;
     text-align: center;
     position: relative;
@@ -229,11 +229,11 @@ header {
     font-size: 22px;
     color: rgba(255, 255, 255, 0.88);
     font-weight: 400;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     line-height: 1.6;
 }
 
-.clients-logos {
+/* .clients-logos {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,7 +243,7 @@ header {
     margin: 0 auto;
     position: relative;
     z-index: 2;
-}
+} */
 
 /* Logo styling */
 .clients-logos img {
@@ -262,7 +262,7 @@ header {
 }
 
 /* Optional background glow (like instudio effect) */
-.clients-inner::before {
+/* .clients-inner::before {
     content: "";
     position: absolute;
     top: -200px;
@@ -274,7 +274,7 @@ header {
     background: radial-gradient(circle, rgba(0, 200, 255, 0.12), rgba(0, 0, 0, 0));
     filter: blur(100px);
     z-index: 0;
-}
+} */
 
 /* Responsive behavior */
 @media (max-width: 1024px) {
