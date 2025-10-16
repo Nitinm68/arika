@@ -24,8 +24,12 @@ mongoose
 // ✅ routes
 app.get("/", (req, res) => res.send("OK"));
 app.post("/api/contact", postContact);
-app.post("/api/start-project", submitProject); // ✅ new route for Start Project form
+app.post("/api/start-project", submitProject);
 
 // ✅ server start
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Server listening on", PORT));
+
+app.get("/api/start-project", (req, res) => {
+  res.json({ message: "✅ Backend route is active!" });
+});
