@@ -1,22 +1,24 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaGlobe, FaClock, FaComments } from "react-icons/fa";
 
 export default function Start() {
   const form = useRef();
 
-  // ✅ Send data to backend + email
+  // ✅ Send data to backend + EmailJS
   const sendEmail = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form.current);
     const data = Object.fromEntries(formData.entries());
 
+    console.log("Backend URL:", import.meta.env.VITE_API_URL);
+
     try {
-      // ✅ 1️⃣ Store form data in MongoDB via backend
+      /* ✅ 1️⃣ Store data in MongoDB via backend */
       const backendRes = await fetch(
-        "http://localhost:5000/api/start-project",
+        `${import.meta.env.VITE_API_URL}/api/start-project`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -24,15 +26,19 @@ export default function Start() {
         }
       );
 
+      if (!backendRes.ok) {
+        throw new Error(`Backend error: ${backendRes.status}`);
+      }
+
       const backendResult = await backendRes.json();
       console.log("Backend Response:", backendResult);
 
-      // ✅ 2️⃣ Send email via EmailJS frontend SDK
+      /* ✅ 2️⃣ Send email via EmailJS */
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         form.current,
-        import.meta.env.VITE_EMAILJS_USER_ID
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       alert("✅ Message sent & stored successfully!");
@@ -42,6 +48,7 @@ export default function Start() {
       alert("Something went wrong. Please try again.");
     }
   };
+
   return (
     <section
       id="contact"
@@ -53,7 +60,6 @@ export default function Start() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        // padding: "100px 8vw",
         marginTop: "40px",
       }}
     >
@@ -114,7 +120,7 @@ export default function Start() {
             </h1>
           </motion.div>
 
-          {/* ✅ Form that connects with backend */}
+          {/* ✅ Form */}
           <form
             ref={form}
             onSubmit={sendEmail}
@@ -124,7 +130,6 @@ export default function Start() {
               gap: "20px",
             }}
           >
-            {/* Name */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
@@ -140,7 +145,6 @@ export default function Start() {
               />
             </div>
 
-            {/* Email */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
@@ -156,7 +160,6 @@ export default function Start() {
               />
             </div>
 
-            {/* Project Type */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
@@ -177,7 +180,6 @@ export default function Start() {
               </select>
             </div>
 
-            {/* Timeline */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
@@ -193,7 +195,6 @@ export default function Start() {
               />
             </div>
 
-            {/* Message Box */}
             <div
               style={{
                 gridColumn: "1 / -1",
@@ -217,7 +218,6 @@ export default function Start() {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
             <div style={{ gridColumn: "1 / -1" }}>
               <button
                 type="submit"
@@ -242,7 +242,7 @@ export default function Start() {
           </form>
         </div>
 
-        {/* RIGHT SIDE - INFO */}
+        {/* RIGHT SIDE */}
         <div style={{ flex: "0.8", minWidth: "300px" }}>
           <h3 style={infoTitle}>Connect with us</h3>
           <p style={infoLine}>
@@ -266,9 +266,7 @@ export default function Start() {
   );
 }
 
-/* ========================
-   STYLES
-======================== */
+/* ============ STYLES ============ */
 const inputStyle = {
   background: "rgba(255,255,255,0.06)",
   border: "1px solid rgba(255,255,255,0.1)",
