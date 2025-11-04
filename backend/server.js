@@ -38,8 +38,8 @@ mongoose
 // ✅ routes
 app.get("/", (req, res) => res.send("OK"));
 app.post("/api/contact", postContact);
-app.post("/api/start-project", submitProject);
-app.get("/api/start-project", (req, res) => {
+app.post("/api/start", submitProject);
+app.get("/api/start", (req, res) => {
   res.json({ message: "✅ Backend route is active!" });
 });
 
