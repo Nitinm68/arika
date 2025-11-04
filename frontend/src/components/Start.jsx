@@ -18,7 +18,8 @@ export default function Start() {
     try {
       /* ✅ 1️⃣ Store data in MongoDB via backend */
       const backendRes = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/start-project`,
+        `https://arika.onrender.com/api/start-project`,
+
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
