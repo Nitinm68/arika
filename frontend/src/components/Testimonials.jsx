@@ -6,14 +6,14 @@ const testimonials = [
   {
     stars: 5,
     feedback:
-      "ARIKAB2B helped us boost our sales and create new revenue streams for our advertisement through comprehensive social media strategies and marketing advisory.",
+      "We’re extremely satisfied with Code Orbit Technologies. Their digital marketing strategies helped us increase our sales and discover new revenue opportunities.",
     name: "Laurent Guiraud",
     position: "Director @EatIn Monaco",
   },
   {
     stars: 5,
     feedback:
-      "The team at ARIKAB2B helped us launch a new website the 50th anniversary of our Real Estate agency. From domain acquisition and brand design to launch. Thanks",
+      "Code Orbit Technologies played a key role in boosting our business performance by implementing effective social media marketing and advisory solutions.",
     name: "Jeremy Van Den Eynde",
     position: "Co-Owner @Findr.",
   },

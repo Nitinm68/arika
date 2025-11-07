@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Branding() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const services = [
+    {
+      title: "Brand Identity",
+      desc: "We craft unique brand identities that reflect your vision and connect emotionally with your audience — from logos and color palettes to visual guidelines.",
+    },
+    {
+      title: "Rebranding",
+      desc: "We help businesses evolve by redefining their brand strategy, design, and voice to stay relevant, modern, and aligned with their goals.",
+    },
+    {
+      title: "Brand Architecture",
+      desc: "We organize complex brand structures into a clear hierarchy, making your products and sub-brands easily recognizable and strategically positioned.",
+    },
+    {
+      title: "Brand Management",
+      desc: "From consistency in design to ongoing marketing support, we manage every touchpoint of your brand to ensure it maintains strength and clarity.",
+    },
+    {
+      title: "Brand Strategy",
+      desc: "Our strategic planning defines your brand’s purpose, positioning, and promise — building a foundation for growth and recognition in your market.",
+    },
+    {
+      title: "Packaging & Visual Design",
+      desc: "We create impactful packaging and visual assets that capture attention, communicate quality, and build strong first impressions for your customers.",
+    },
+  ];
+
+  const toggleService = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div
       style={{
-        background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        background: "#121212",
         color: "#fff",
         minHeight: "100vh",
         overflowX: "hidden",
@@ -69,10 +102,10 @@ export default function Branding() {
           }}
         >
           <img
-            src="/assets/projects/ITAL.png" // 🔹 smaller, cleaner image
+            src="/assets/projects/ITAL.png"
             alt="ITAL Brokers"
             style={{
-              width: "75%", // reduced from 100% to 75%
+              width: "75%",
               display: "block",
               margin: "0 auto 25px",
               borderRadius: "12px",
@@ -164,53 +197,73 @@ export default function Branding() {
         </div>
       </section>
 
-      {/* ===== SERVICE LIST ===== */}
+      {/* ===== INTERACTIVE SERVICE LIST ===== */}
       <section style={{ padding: "60px 8vw 100px" }}>
-        {[
-          "Brand Identity",
-          "Rebranding",
-          "Brand Architecture",
-          "Brand Management",
-          "Brand Strategy",
-          "Packaging & Visual Design",
-        ].map((service, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              borderBottom: "1px solid rgba(255,255,255,0.1)",
-              padding: "22px 0",
-            }}
-          >
-            <div
+        {services.map((service, i) => (
+          <div key={i}>
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              onClick={() => toggleService(i)}
               style={{
                 display: "flex",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: "15px",
-              }}
-            >
-              <span style={{ color: "#00bfff", fontWeight: "500" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h4 style={{ fontSize: "20px", fontWeight: "500" }}>{service}</h4>
-            </div>
-            <motion.span
-              whileHover={{ rotate: 180 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                fontSize: "22px",
-                color: "#00bfff",
+                borderBottom: "1px solid rgba(255,255,255,0.1)",
+                padding: "22px 0",
                 cursor: "pointer",
               }}
             >
-              ⌄
-            </motion.span>
-          </motion.div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "15px",
+                }}
+              >
+                <span style={{ color: "#00bfff", fontWeight: "500" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h4 style={{ fontSize: "20px", fontWeight: "500" }}>
+                  {service.title}
+                </h4>
+              </div>
+
+              <motion.span
+                animate={{ rotate: openIndex === i ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  fontSize: "22px",
+                  color: "#00bfff",
+                }}
+              >
+                ⌄
+              </motion.span>
+            </motion.div>
+
+            {/* Expandable content */}
+            <AnimatePresence>
+              {openIndex === i && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  style={{
+                    overflow: "hidden",
+                    padding: "15px 10px 25px 60px",
+                    color: "rgba(255,255,255,0.85)",
+                    lineHeight: "1.7",
+                    fontSize: "16px",
+                  }}
+                >
+                  {service.desc}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         ))}
       </section>
     </div>

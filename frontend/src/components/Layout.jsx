@@ -6,7 +6,9 @@ export default function Layout({ children }) {
   return (
     <div
       style={{
-        background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        // background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        background: "#121212",
+
         color: "#fff",
         minHeight: "100vh",
         display: "flex",

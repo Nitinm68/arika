@@ -1,20 +1,21 @@
 import React from "react";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa6";
-import { FaEnvelope, FaClock, FaGlobe, FaArrowRight } from "react-icons/fa";
+import { FaEnvelope, FaClock, FaGlobe } from "react-icons/fa";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // your social + contact links
+  // Social + Contact Links
   const instagramUrl =
-    "https://www.instagram.com/arika.b2b?igsh=MXFtbGt2MXkxYTkzdg==";
+    "https://www.instagram.com/codeorbitofficial?igsh=MThmeGp4eDlvMnRheg==";
   const linkedinUrl =
-    "https://www.linkedin.com/in/arika-b2b-221567173?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app";
-  const mailAddress = "office@arikab2b.in";
-  const phoneNumber = "+917310251337";
+    "https://www.linkedin.com/in/codeorbit-technologies-025560397/";
+  const mailAddress = "info@codeorbittechnologies.com";
+  const phoneNumber = "+91 8294220402";
 
   return (
     <footer
+      className="footer"
       style={{
         width: "100%",
         color: "#fff",
@@ -23,12 +24,13 @@ export default function Footer() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        // background:
-        //   "linear-gradient(180deg, #00142b 0%, #001b38 60%, #002a64 100%)",
+        background: "#000814",
+        overflow: "hidden",
       }}
     >
       {/* ----------- Top Section ----------- */}
       <div
+        className="footer-top"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -40,7 +42,7 @@ export default function Footer() {
         }}
       >
         {/* Left Section */}
-        <div style={{ flex: "1", minWidth: "350px" }}>
+        <div style={{ flex: "1", minWidth: "300px" }}>
           <p
             style={{
               fontSize: "14px",
@@ -51,6 +53,7 @@ export default function Footer() {
           >
             HELLO! WE’RE LISTENING
           </p>
+
           <h1
             style={{
               fontSize: "72px",
@@ -93,126 +96,45 @@ export default function Footer() {
           style={{
             flex: "1.2",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
             gap: "50px",
             alignItems: "flex-start",
           }}
         >
           {/* Connect With Us */}
           <div>
-            <button
-              style={{
-                background: "linear-gradient(90deg, #005eff, #00cfff)",
-                border: "none",
-                borderRadius: "8px",
-                padding: "10px 20px",
-                color: "#fff",
-                fontWeight: "600",
-                marginBottom: "15px",
-                cursor: "pointer",
-              }}
-            >
-              Connect with us
-            </button>
-            {/* mail link */}
+            <button style={btnStyle}>Connect with us</button>
             <p
-              style={{ marginBottom: "10px", cursor: "pointer" }}
+              style={mailLink}
               onClick={() => (window.location.href = `mailto:${mailAddress}`)}
             >
-              <FaEnvelope style={{ marginRight: "10px", color: "#00bfff" }} />
+              <FaEnvelope style={iconStyle} />
               {mailAddress}
             </p>
-            {/* phone link */}
             <p
-              style={{ cursor: "pointer" }}
+              style={phoneLink}
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
-              +91 731 025 1337
+              {phoneNumber}
             </p>
           </div>
 
           {/* Address */}
           <div>
-            <button
-              style={{
-                background: "linear-gradient(90deg, #005eff, #00cfff)",
-                border: "none",
-                borderRadius: "8px",
-                padding: "10px 20px",
-                color: "#fff",
-                fontWeight: "600",
-                marginBottom: "15px",
-                cursor: "pointer",
-              }}
-            >
-              Address
-            </button>
-            <p style={{ marginBottom: "10px" }}>
-              <FaGlobe style={{ marginRight: "10px", color: "#00bfff" }} />
-              C19, Vibhuti Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010
+            <button style={btnStyle}>Address</button>
+            <p style={paraStyle}>
+              <FaGlobe style={iconStyle} />
+              Second Floor, Tarunika Foods & Confectionery, Dev Raj Tower,
+              Gewalbigha, Gaya, Bihar 823001
             </p>
-            <p>
-              <FaClock style={{ marginRight: "10px", color: "#00bfff" }} />
-              Monday–Saturday 09:00AM–07:00PM
+            <p style={paraStyle}>
+              <FaClock style={iconStyle} /> Monday–Saturday 09:00AM–07:00PM
             </p>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <button
-              style={{
-                background: "linear-gradient(90deg, #005eff, #00cfff)",
-                border: "none",
-                borderRadius: "8px",
-                padding: "10px 20px",
-                color: "#fff",
-                fontWeight: "600",
-                marginBottom: "15px",
-                cursor: "pointer",
-              }}
-            >
-              Join our team
-            </button>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                borderBottom: "2px solid #007fff",
-                paddingBottom: "8px",
-              }}
-            >
-              <input
-                type="email"
-                placeholder="Email Address"
-                style={{
-                  flex: 1,
-                  background: "transparent",
-                  border: "none",
-                  outline: "none",
-                  color: "#fff",
-                  fontSize: "16px",
-                }}
-              />
-              <FaArrowRight style={{ color: "#00bfff", fontSize: "18px" }} />
-            </div>
           </div>
 
           {/* Follow Us */}
           <div>
-            <button
-              style={{
-                background: "linear-gradient(90deg, #005eff, #00cfff)",
-                border: "none",
-                borderRadius: "8px",
-                padding: "10px 20px",
-                color: "#fff",
-                fontWeight: "600",
-                marginBottom: "15px",
-                cursor: "pointer",
-              }}
-            >
-              Follow us
-            </button>
+            <button style={btnStyle}>Follow us</button>
             <div
               style={{
                 display: "flex",
@@ -222,12 +144,7 @@ export default function Footer() {
             >
               <p
                 onClick={() => window.open(instagramUrl, "_blank")}
-                style={{
-                  color: "#fff",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
+                style={followLink}
                 onMouseOver={(e) => (e.target.style.color = "#00c4ff")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
@@ -235,12 +152,7 @@ export default function Footer() {
               </p>
               <p
                 onClick={() => window.open(linkedinUrl, "_blank")}
-                style={{
-                  color: "#fff",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
+                style={followLink}
                 onMouseOver={(e) => (e.target.style.color = "#00c4ff")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
@@ -253,6 +165,7 @@ export default function Footer() {
 
       {/* ----------- Bottom Section ----------- */}
       <div
+        className="footer-bottom"
         style={{
           width: "100%",
           maxWidth: "1400px",
@@ -264,9 +177,12 @@ export default function Footer() {
           alignItems: "center",
           color: "#b0c4de",
           fontSize: "14px",
+          flexWrap: "wrap",
+          gap: "20px",
+          textAlign: "center",
         }}
       >
-        <div>© {currentYear} ArikaB2B.in</div>
+        <div>© {currentYear} CodeOrbit Technologies Private Limited</div>
 
         <div
           style={{
@@ -274,22 +190,129 @@ export default function Footer() {
             gap: "25px",
             fontSize: "22px",
             cursor: "pointer",
+            justifyContent: "center",
           }}
         >
           <FaInstagram
             onClick={() => window.open(instagramUrl, "_blank")}
-            style={{ transition: "0.3s" }}
+            style={socialIcon}
             onMouseOver={(e) => (e.target.style.color = "#00c4ff")}
             onMouseOut={(e) => (e.target.style.color = "#b0c4de")}
           />
           <FaLinkedinIn
             onClick={() => window.open(linkedinUrl, "_blank")}
-            style={{ transition: "0.3s" }}
+            style={socialIcon}
             onMouseOver={(e) => (e.target.style.color = "#00c4ff")}
             onMouseOut={(e) => (e.target.style.color = "#b0c4de")}
           />
         </div>
       </div>
+
+      {/* ✅ Responsive Styling */}
+      <style>
+        {`
+          @media (max-width: 1024px) {
+            .footer {
+              padding: 80px 6vw 50px !important;
+            }
+            .footer h1 {
+              font-size: 54px !important;
+            }
+            .footer-top {
+              gap: 60px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .footer h1 {
+              font-size: 42px !important;
+              text-align: center !important;
+            }
+            .footer p {
+              text-align: center !important;
+            }
+            .footer-top {
+              flex-direction: column !important;
+              gap: 40px !important;
+              align-items: center !important;
+            }
+            .footer-bottom {
+              flex-direction: column !important;
+              gap: 16px !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .footer {
+              padding: 60px 5vw 40px !important;
+            }
+            .footer h1 {
+              font-size: 32px !important;
+              line-height: 1.3 !important;
+            }
+            .footer button {
+              padding: 8px 16px !important;
+              font-size: 14px !important;
+            }
+            .footer p {
+              font-size: 14px !important;
+            }
+            .footer-bottom {
+              font-size: 13px !important;
+            }
+          }
+        `}
+      </style>
     </footer>
   );
 }
+
+/* ========= STYLES ========= */
+const btnStyle = {
+  background: "linear-gradient(90deg, #005eff, #00cfff)",
+  border: "none",
+  borderRadius: "8px",
+  padding: "10px 20px",
+  color: "#fff",
+  fontWeight: "600",
+  marginBottom: "15px",
+  cursor: "pointer",
+};
+
+const iconStyle = {
+  marginRight: "10px",
+  color: "#00bfff",
+};
+
+const paraStyle = {
+  marginBottom: "10px",
+  color: "#d0e3ff",
+  lineHeight: "1.6",
+  fontSize: "15px",
+};
+
+const mailLink = {
+  marginBottom: "10px",
+  color: "#d0e3ff",
+  lineHeight: "1.6",
+  fontSize: "15px",
+};
+
+const phoneLink = {
+  cursor: "pointer",
+  color: "#fff",
+  fontSize: "15px",
+  transition: "0.3s",
+};
+
+const followLink = {
+  color: "#fff",
+  fontSize: "16px",
+  cursor: "pointer",
+  transition: "0.3s",
+};
+
+const socialIcon = {
+  transition: "0.3s",
+  color: "#b0c4de",
+};

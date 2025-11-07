@@ -11,10 +11,7 @@ import Branding from "./pages/Branding";
 import WebSolutions from "./pages/WebSolutions";
 import Photography from "./pages/Photography";
 import Consulting from "./pages/Consulting";
-import PortfolioEatIn from "./pages/PortfolioEatIn";
-import PortfolioLeCloset from "./pages/PortfolioLeCloset";
-import PortfolioITAL from "./pages/PortfolioITAL";
-import PortfolioFindr from "./pages/PortfolioFindr";
+import About from "./components/About";
 
 // ✅ Optional (for smooth scroll to top on route change)
 import ScrollToTop from "./components/ScrollToTopButton";
@@ -83,34 +80,10 @@ export default function App() {
 
         {/* 🎨 Portfolio Pages */}
         <Route
-          path="/portfolio/eatin"
+          path="/about"
           element={
             <Layout>
-              <PortfolioEatIn />
-            </Layout>
-          }
-        />
-        <Route
-          path="/portfolio/lecloset"
-          element={
-            <Layout>
-              <PortfolioLeCloset />
-            </Layout>
-          }
-        />
-        <Route
-          path="/portfolio/ital"
-          element={
-            <Layout>
-              <PortfolioITAL />
-            </Layout>
-          }
-        />
-        <Route
-          path="/portfolio/findr"
-          element={
-            <Layout>
-              <PortfolioFindr />
+              <About />
             </Layout>
           }
         />

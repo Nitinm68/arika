@@ -6,7 +6,7 @@ export default function Photography() {
   return (
     <div
       style={{
-        background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        background: "#121212",
         color: "#fff",
         overflowX: "hidden",
       }}
@@ -18,7 +18,7 @@ export default function Photography() {
         style={{
           textAlign: "center",
           padding: "160px 8vw 120px",
-          background: "linear-gradient(180deg, #001033 0%, #00081a 100%)",
+          background: "#121212",
         }}
       >
         <motion.div
@@ -29,7 +29,7 @@ export default function Photography() {
           <p
             style={{
               display: "inline-block",
-              background: "linear-gradient(90deg, #005eff, #00d4ff)",
+              background: "#121212",
               color: "#fff",
               padding: "6px 18px",
               borderRadius: "20px",
@@ -73,7 +73,7 @@ export default function Photography() {
         style={{
           textAlign: "center",
           padding: "60px 0 100px",
-          background: "linear-gradient(180deg, #000c25 0%, #00081a 100%)",
+          background: "#121212",
         }}
       >
         <motion.div
@@ -110,7 +110,7 @@ export default function Photography() {
         style={{
           textAlign: "center",
           padding: "120px 8vw",
-          background: "radial-gradient(circle at center, #001d4f, #00081a 80%)",
+          background: "#121212",
         }}
       >
         <motion.h2

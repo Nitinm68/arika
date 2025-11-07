@@ -44,7 +44,7 @@ body,
 }
 
 /* NAV */
-header {
+/* header {
     position: fixed;
     top: 0;
     left: 0;
@@ -84,7 +84,9 @@ header {
 }
 
 .cta {
-    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    /* background: linear-gradient(90deg, var(--accent1), var(--accent2)); */
+/* background: #121212;
+
     padding: 10px 16px;
     border-radius: 10px;
     color: #001;
@@ -92,26 +94,9 @@ header {
     text-decoration: none
 }
 
-/* ============ FIXED HERO SECTION ============ */
-/* .hero-section {
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100vh;
-    margin-bottom: 0 !important;
-    /* removes section separation */
-/* padding-bottom: 0 !important;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at 20% 20%, #3b9dff 0%, #001a3a 40%, #00081a 100%);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: gradientFlow 20s ease-in-out infinite;
-} */
+.cta:hover {
+    opacity: 1;
+}
 
 @keyframes gradientFlow {
     0% {
@@ -125,9 +110,8 @@ header {
     100% {
         background-position: 0% 50%;
     }
-}
-
-.hero-glow {
+} */
+*/ .hero-glow {
     position: absolute;
     top: -200px;
     left: -200px;
@@ -147,15 +131,15 @@ header {
 }
 
 .hero h1 {
-    font-size: 88px;
+    font-size: 60px;
     line-height: 1.05;
     margin-bottom: 24px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .grad-text {
     background: linear-gradient(90deg, #3cb7ff, #7dd3fc);
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
 }
 
@@ -233,17 +217,7 @@ header {
     line-height: 1.6;
 }
 
-/* .clients-logos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 60px;
-    max-width: 1180px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-} */
+
 
 /* Logo styling */
 .clients-logos img {
@@ -261,20 +235,7 @@ header {
     filter: drop-shadow(0 0 10px rgba(59, 157, 255, 0.3));
 }
 
-/* Optional background glow (like instudio effect) */
-/* .clients-inner::before {
-    content: "";
-    position: absolute;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 200, 255, 0.12), rgba(0, 0, 0, 0));
-    filter: blur(100px);
-    z-index: 0;
-} */
+
 
 /* Responsive behavior */
 @media (max-width: 1024px) {
@@ -320,12 +281,7 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.03)
 }
 
-/* portfolio (simple) */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px
-}
+
 
 .project {
     border-radius: 12px;
@@ -345,7 +301,9 @@ header {
     margin: 0 auto;
     padding: 40px;
     border-radius: 12px;
-    background: linear-gradient(90deg, rgba(59, 157, 255, 0.06), rgba(0, 0, 0, 0.02));
+    /* background: linear-gradient(90deg, rgba(59, 157, 255, 0.06), rgba(0, 0, 0, 0.02)); */
+    background: #121212;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -364,7 +322,9 @@ header {
 
 .contact-left {
     flex: 1;
-    background: linear-gradient(90deg, rgba(59, 157, 255, 0.12), rgba(0, 0, 0, 0.02));
+    /* background: linear-gradient(90deg, rgba(59, 157, 255, 0.12), rgba(0, 0, 0, 0.02)); */
+    background: #121212;
+
     padding: 28px;
     border-radius: 10px;
     color: #fff
@@ -372,7 +332,7 @@ header {
 
 .contact-form {
     flex: 1;
-    background: #071221;
+    background: #121212;
     padding: 28px;
     border-radius: 10px;
     color: #fff
@@ -385,7 +345,7 @@ header {
     border-radius: 8px;
     border: 0;
     margin-bottom: 12px;
-    background: #0b1320;
+    background: #121212;
     color: #fff
 }
 
@@ -432,9 +392,9 @@ footer {
         grid-template-columns: 1fr
     }
 
-    .portfolio-grid {
+    /* .portfolio-grid {
         grid-template-columns: 1fr
-    }
+    } */
 
     .section-inner {
         padding: 36px 16px

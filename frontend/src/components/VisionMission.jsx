@@ -6,8 +6,10 @@ export default function VisionMission() {
       style={{
         width: "100vw",
         minHeight: "100vh",
-        background:
-          "radial-gradient(circle at center, rgba(5,20,50,1) 0%, rgba(0,10,30,1) 100%)",
+        // background:
+        //   "radial-gradient(circle at center, rgba(5,20,50,1) 0%, rgba(0,10,30,1) 100%)",
+        background: "121212",
+
         color: "#fff",
         display: "flex",
         flexDirection: "column",
@@ -28,7 +30,8 @@ export default function VisionMission() {
           width: "600px",
           height: "600px",
           background:
-            "radial-gradient(circle, rgba(0,120,255,0.25) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)",
+
           transform: "translate(-50%, -50%)",
           zIndex: 0,
           filter: "blur(80px)",
@@ -64,7 +67,7 @@ export default function VisionMission() {
             marginBottom: "20px",
           }}
         >
-          Arika B2B’s{" "}
+          Code Orbit Technologies’s{" "}
           <span
             style={{
               background: "linear-gradient(90deg, #00b4ff, #00e0ff)",
@@ -84,9 +87,10 @@ export default function VisionMission() {
             margin: "0 auto 30px",
           }}
         >
-          Arika B2B’s mission is to use customized digital marketing strategies
-          to help B2B businesses achieve measurable growth. The agency’s core
-          services for this purpose include:
+          At Code Orbit Technologies, our mission is to empower brands with
+          tailored digital marketing strategies that drive measurable business
+          growth. Our core services are designed to deliver real, lasting
+          results.
         </p>
 
         <ul
@@ -115,7 +119,7 @@ export default function VisionMission() {
             marginBottom: "20px",
           }}
         >
-          Arika B2B’s{" "}
+          Code Orbit Technologies’s{" "}
           <span
             style={{
               background: "linear-gradient(90deg, #8b5cf6, #00b4ff)",
@@ -135,8 +139,9 @@ export default function VisionMission() {
             margin: "0 auto 30px",
           }}
         >
-          Arika B2B’s vision centers on becoming the premier digital marketing
-          agency for the B2B sector. The company aims to achieve this by:
+          Code Orbit Technologies envisions becoming the leading digital
+          marketing agency in the Business sector — a trusted partner known for
+          driving innovation, measurable results, and sustainable growth.
         </p>
 
         <ul

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Consulting() {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -10,12 +10,30 @@ export default function Consulting() {
   };
 
   const expertiseList = [
-    "Company Establishment",
-    "Establishing Headquarters",
-    "Talent Acquisition",
-    "Branding, Marketing & Development",
-    "Market Analysis",
-    "Growth",
+    {
+      title: "Company Establishment",
+      desc: "We assist in setting up your company structure, legal registration, and compliance — ensuring a seamless launch into your target market.",
+    },
+    {
+      title: "Establishing Headquarters",
+      desc: "From location scouting to office setup, we guide you in finding the perfect headquarters to position your business for long-term success.",
+    },
+    {
+      title: "Talent Acquisition",
+      desc: "We connect you with the right professionals — from tech experts to management leaders — ensuring a powerful team that drives growth.",
+    },
+    {
+      title: "Branding, Marketing & Development",
+      desc: "Our experts build a brand strategy that enhances visibility, communicates value, and accelerates business growth through modern digital methods.",
+    },
+    {
+      title: "Market Analysis",
+      desc: "We conduct in-depth market research to identify opportunities, audience behavior, and competitive positioning for smarter business decisions.",
+    },
+    {
+      title: "Growth",
+      desc: "Through data-driven consulting, we help scale your operations sustainably with proven strategies for expansion and brand excellence.",
+    },
   ];
 
   const services = [
@@ -26,7 +44,7 @@ export default function Consulting() {
     },
     {
       title: "Prime Location",
-      desc: "We help you find the perfect office space tailored to your business needs and Monaco's unique landscape.",
+      desc: "We help you find the perfect office space tailored to your business needs and environment.",
     },
     {
       title: "Talent Acquisition",
@@ -50,7 +68,7 @@ export default function Consulting() {
   return (
     <div
       style={{
-        background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        background: "#121212",
         color: "#fff",
         overflowX: "hidden",
       }}
@@ -62,7 +80,7 @@ export default function Consulting() {
         style={{
           textAlign: "center",
           padding: "160px 8vw 100px",
-          background: "linear-gradient(180deg, #001033 0%, #00081a 100%)",
+          background: "#121212",
         }}
       >
         <motion.div
@@ -73,7 +91,6 @@ export default function Consulting() {
           <p
             style={{
               display: "inline-block",
-              background: "linear-gradient(90deg, #005eff, #00d4ff)",
               color: "#fff",
               padding: "6px 18px",
               borderRadius: "20px",
@@ -146,7 +163,7 @@ export default function Consulting() {
         style={{
           textAlign: "center",
           padding: "120px 8vw",
-          background: "radial-gradient(circle at center, #001d4f, #00081a 80%)",
+          background: "#121212",
         }}
       >
         <motion.h2
@@ -254,7 +271,7 @@ export default function Consulting() {
         </div>
       </section>
 
-      {/* ==== EXPERTISE SECTION ==== */}
+      {/* ==== EXPERTISE SECTION (with accordion) ==== */}
       <section
         style={{
           padding: "100px 8vw 120px",
@@ -298,6 +315,7 @@ export default function Consulting() {
           💡 OUR EXPERTISE
         </button>
 
+        {/* Accordion List */}
         <div>
           {expertiseList.map((item, index) => (
             <motion.div
@@ -310,30 +328,56 @@ export default function Consulting() {
                     ? "none"
                     : "1px solid rgba(255,255,255,0.1)",
                 padding: "22px 0",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
                 cursor: "pointer",
               }}
             >
               <div
-                style={{ display: "flex", alignItems: "center", gap: "15px" }}
-              >
-                <span style={{ color: "#00bfff", fontWeight: "500" }}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h4 style={{ fontSize: "20px", fontWeight: "500" }}>{item}</h4>
-              </div>
-              <motion.span
-                animate={{ rotate: activeAccordion === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
                 style={{
-                  fontSize: "22px",
-                  color: "#00bfff",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
-                ⌄
-              </motion.span>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "15px" }}
+                >
+                  <span style={{ color: "#00bfff", fontWeight: "500" }}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h4 style={{ fontSize: "20px", fontWeight: "500" }}>
+                    {item.title}
+                  </h4>
+                </div>
+                <motion.span
+                  animate={{ rotate: activeAccordion === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ fontSize: "22px", color: "#00bfff" }}
+                >
+                  ⌄
+                </motion.span>
+              </div>
+
+              {/* Expandable Description */}
+              <AnimatePresence>
+                {activeAccordion === index && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4 }}
+                    style={{
+                      marginTop: "10px",
+                      color: "rgba(255,255,255,0.75)",
+                      lineHeight: 1.7,
+                      fontSize: "15px",
+                      paddingLeft: "50px",
+                      maxWidth: "750px",
+                    }}
+                  >
+                    {item.desc}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

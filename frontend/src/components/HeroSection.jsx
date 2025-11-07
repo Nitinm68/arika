@@ -13,27 +13,35 @@ export default function HeroSection() {
   const loopedLogos = [...logos, ...logos];
 
   return (
-    <section className="hero-section">
+    <section className="hero-section hero">
       {/* 🎥 Background Video */}
       <video className="bg-video" autoPlay loop muted playsInline>
-        {/* 👇 Change the path below to your video file */}
-        <source src="/assets/videos/videoplayback.webm" type="video/mp4" />
+        <source src="/assets/videos/videoplayback.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay to darken video for contrast */}
+      {/* Overlay */}
       <div className="overlay"></div>
 
-      {/* Hero Text */}
+      {/* ✨ Hero Glow and Plate */}
+      <div className="hero-glow"></div>
+      <div className="hero-plate"></div>
+
+      {/* Hero Content */}
       <motion.div
-        className="hero-content"
+        className="hero-content hero-inner"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        <h1 className="hero-title">ARIKA</h1>
+        <h1 className="hero-title grad-text">CODE ORBIT TECHNOLOGIES</h1>
         <p className="hero-subtitle">
-          Your Trusted And The Best Digital Marketing Agency in Lucknow
+          Your Growth Partner and the Leading Digital Marketing Agency in
+          Lucknow.
         </p>
+
+        <a href="#contact" className="hero-cta">
+          Get Started
+        </a>
       </motion.div>
 
       {/* Trusted Clients Section */}
@@ -43,8 +51,8 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Our journey is built alongside trusted partners who believe in our
-          creativity and expertise.
+          Empowered by trusted partners who believe in our passion and
+          performance
         </motion.p>
 
         <motion.div
@@ -53,7 +61,7 @@ export default function HeroSection() {
           transition={{
             repeat: Infinity,
             repeatType: "loop",
-            duration: 20,
+            duration: 25,
             ease: "linear",
           }}
         >
@@ -69,23 +77,24 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* CSS Styling */}
+      {/* 💅 Responsive Styling */}
       <style>{`
-        /* HERO SECTION */
+        /* ===== HERO BASE ===== */
         .hero-section {
           position: relative;
-          height: 100vh;
-          overflow: hidden;
+          min-height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          color: #fff;
           text-align: center;
+          color: #fff;
+          overflow: hidden;
+          padding: 0 1rem;
           font-family: 'Poppins', sans-serif;
         }
 
-        /* 🎥 Background Video */
+        /* 🎥 Video Background */
         .bg-video {
           position: absolute;
           top: 0;
@@ -96,82 +105,197 @@ export default function HeroSection() {
           z-index: 0;
         }
 
-        /* Dark overlay for readability */
         .overlay {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0, 0, 0, 0.5);
+          background: rgba(0, 0, 0, 0.55);
           z-index: 1;
         }
 
-        /* TEXT */
+        /* 🔆 Hero Content */
         .hero-content {
           position: relative;
-          z-index: 3;
+          z-index: 5;
+          max-width: 900px;
+          padding: 0 1rem;
         }
 
         .hero-title {
-          font-size: 110px;
+          font-size: clamp(2rem, 6vw, 5.5rem);
           font-weight: 800;
-          letter-spacing: 8px;
           text-transform: uppercase;
-          color: #ffffff;
+          letter-spacing: 4px;
           text-shadow: 0 0 25px rgba(0,180,255,0.4), 0 0 60px rgba(0,80,255,0.2);
-          margin-bottom: 20px;
-          margin-top:20px;
+          margin-bottom: 1rem;
+        }
+
+        .grad-text {
+          background: linear-gradient(90deg, #3cb7ff, #7dd3fc);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-          font-size: 20px;
+          font-size: clamp(1rem, 2vw, 1.3rem);
           color: #d9e9ff;
           opacity: 0.9;
-          max-width: 700px;
-          margin: 0 auto;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+          max-width: 720px;
         }
 
-        /* TRUSTED CLIENTS */
+        /* CTA */
+        .hero-cta {
+          display: inline-block;
+          background: linear-gradient(90deg, #3b9dff, #00d4ff);
+          color: #001033 !important;
+          padding: 0.9rem 2.2rem;
+          border-radius: 12px;
+          font-weight: 700;
+          text-decoration: none;
+          box-shadow: 0 8px 30px rgba(0, 212, 255, 0.25);
+          transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 36px rgba(0, 212, 255, 0.35);
+        }
+
+        /* 🌌 Glow + Floating Plate */
+        .hero-glow {
+          position: absolute;
+          top: -200px;
+          left: -200px;
+          width: 700px;
+          height: 700px;
+          background: radial-gradient(circle, rgba(59, 157, 255, 0.35) 0%, rgba(0, 0, 0, 0) 75%);
+          filter: blur(120px);
+          z-index: 1;
+          animation: floatGlow 10s ease-in-out infinite alternate;
+        }
+
+        .hero-plate {
+          position: absolute;
+          right: 8%;
+          top: 25%;
+          width: 380px;
+          height: 380px;
+          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.03);
+          box-shadow: 0 0 100px rgba(0, 0, 0, 0.4);
+          opacity: 0.06;
+          z-index: 0;
+          animation: floatPlate 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatGlow {
+          0% { transform: translateY(0px) translateX(0px); }
+          100% { transform: translateY(30px) translateX(20px); }
+        }
+
+        @keyframes floatPlate {
+          0% { transform: translateY(0px) translateX(0px); }
+          100% { transform: translateY(-25px) translateX(-15px); }
+        }
+
+        /* ===== TRUSTED CLIENTS ===== */
         .trusted-section {
           position: relative;
           z-index: 3;
-           margin-top: 80px;
-           margin-bottom: 100px;
+          margin-top: 5rem;
           width: 100%;
+          overflow: hidden;
         }
 
         .trusted-section p {
-          font-size: 18px;
+          font-size: 1.1rem;
           color: #b0c4de;
           max-width: 800px;
-          margin: 0 auto 40px;
+          margin: 0 auto 2.5rem;
         }
 
         .logo-slider {
           display: flex;
-          gap: 60px;
+          gap: 3rem;
           width: max-content;
           align-items: center;
-          // margin: 0 auto;
         }
 
         .logo-img {
-          width: 130px;
+          width: 120px;
           height: auto;
           opacity: 0.85;
           border-radius: 6px;
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-          .hero-title {
-            font-size: 60px;
-            letter-spacing: 4px;
+        /* =============== RESPONSIVE BREAKPOINTS =============== */
+
+        /* 📱 Phones */
+        @media (max-width: 576px) {
+          .hero-section {
+            padding: 0 1.2rem;
           }
           .hero-subtitle {
-            font-size: 16px;
+            margin-bottom: 1.8rem;
+          }
+          .hero-cta {
+            padding: 0.8rem 1.8rem;
+            font-size: 0.9rem;
+          }
+          .hero-glow {
+            width: 400px;
+            height: 400px;
+            filter: blur(80px);
+          }
+          .hero-plate {
+            width: 180px;
+            height: 180px;
+            right: 5%;
+            top: 35%;
+          }
+          .logo-img {
+            width: 90px;
+          }
+        }
+
+        /* 📲 Tablets */
+        @media (min-width: 577px) and (max-width: 992px) {
+          .hero-title {
+            letter-spacing: 3px;
+          }
+          .hero-plate {
+            width: 260px;
+            height: 260px;
+            right: 6%;
+            top: 28%;
+          }
+          .trusted-section p {
+            font-size: 1rem;
+          }
+        }
+
+        /* 💻 Large Screens */
+        @media (min-width: 1200px) {
+          .hero-title {
+            font-size: 5rem;
+          }
+          .hero-subtitle {
+            font-size: 1.4rem;
+          }
+          .logo-img {
+            width: 140px;
+          }
+        }
+
+        /* 🖥️ Ultra-Wide */
+        @media (min-width: 1600px) {
+          .hero-content {
+            max-width: 1000px;
           }
         }
       `}</style>

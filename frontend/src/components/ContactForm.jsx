@@ -5,7 +5,7 @@ export default function ContactForm() {
     <section
       style={{
         width: "100vw",
-        backgroundColor: "#050b1a",
+        background: "#121212",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -92,7 +92,7 @@ export default function ContactForm() {
           }}
         >
           <img
-            src="/assets/logos/Arika-Logo.png"
+            src="/assets/logos/logo.png"
             style={{
               width: "100%",
               maxWidth: "600px",

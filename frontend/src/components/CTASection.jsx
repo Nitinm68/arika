@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function CTASection() {
-  // ✅ Counter logic
   const [counts, setCounts] = useState({
     projects: 0,
     sales: 0,
@@ -10,9 +9,10 @@ export default function CTASection() {
     hours: 0,
   });
 
+  // ✅ Counter animation
   useEffect(() => {
-    const duration = 2000; // total animation time (2 sec)
-    const steps = 60; // frames per animation
+    const duration = 2000;
+    const steps = 60;
     let frame = 0;
 
     const interval = setInterval(() => {
@@ -23,22 +23,23 @@ export default function CTASection() {
         years: Math.min(3, Math.floor((frame / steps) * 3)),
         hours: Math.min(250, Math.floor((frame / steps) * 250)),
       });
-
       if (frame >= steps) clearInterval(interval);
     }, duration / steps);
   }, []);
 
   return (
     <section
+      className="cta-section"
       style={{
         width: "100%",
-        background: "#001125",
+        background: "#121212",
         color: "#fff",
         padding: "150px 60px 120px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        marginTop: "-180px", // slight overlap for seamless transition
+        marginTop: "-150px",
+        overflow: "hidden",
       }}
     >
       {/* ---------- TOP CONTENT ---------- */}
@@ -66,15 +67,17 @@ export default function CTASection() {
             }}
           >
             At{" "}
-            <span style={{ fontWeight: "700", color: "#fff" }}>Arika B2B</span>,
-            we help brands unlock growth through smart design, marketing, and
-            digital innovation. Our focus is on creating impact-driven
-            experiences that help businesses grow sustainably.
+            <span style={{ fontWeight: "700", color: "#fff" }}>
+              Code Orbit Technologies
+            </span>
+            , we help brands accelerate growth through smart design, data-driven
+            marketing, and digital innovation. We craft strategies that deliver
+            measurable impact and sustainable success.
           </p>
         </div>
 
         {/* RIGHT SIDE TEXT */}
-        <div style={{ flex: 1.2, minWidth: "400px" }}>
+        <div style={{ flex: 1.2, minWidth: "340px" }}>
           <h2
             style={{
               fontSize: "34px",
@@ -105,7 +108,7 @@ export default function CTASection() {
         </div>
       </motion.div>
 
-      {/* ---------- LINE SEPARATOR ---------- */}
+      {/* ---------- SEPARATOR LINE ---------- */}
       <div
         style={{
           width: "100%",
@@ -132,16 +135,12 @@ export default function CTASection() {
           gap: "40px",
         }}
       >
-        {/* Card 1 */}
         <StatCard number={`${counts.projects}+`} label="Projects Completed" />
-        {/* Card 2 */}
         <StatCard
           number={`₹${counts.sales}Cr+`}
           label="Sales Revenue Generated"
         />
-        {/* Card 3 */}
         <StatCard number={`${counts.years}+`} label="Years in Business" />
-        {/* Card 4 */}
         <StatCard
           number={`${counts.hours}+`}
           label="Hours of Strategy & Design"
@@ -207,16 +206,67 @@ export default function CTASection() {
           start a project →
         </a>
       </motion.div>
+
+      {/* ✅ Responsive Styles */}
+      <style>
+        {`
+          @media (max-width: 1024px) {
+            .cta-section {
+              padding: 120px 40px 80px !important;
+            }
+            .cta-section h2 {
+              font-size: 28px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .cta-section {
+              padding: 100px 25px 80px !important;
+              margin-top: -100px !important;
+            }
+            .cta-section h2 {
+              font-size: 24px !important;
+              text-align: center !important;
+            }
+            .cta-section p {
+              font-size: 15px !important;
+              text-align: justify !important;
+            }
+            .cta-card {
+              padding: 40px 24px !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .cta-section {
+              padding: 80px 18px !important;
+            }
+            .cta-card h3 {
+              font-size: 22px !important;
+            }
+            .cta-card p {
+              font-size: 14px !important;
+            }
+            .cta-card a {
+              padding: 12px 28px !important;
+              font-size: 14px !important;
+            }
+            .cta-section h2 {
+              font-size: 20px !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
 
-// ✅ Reusable Stat Card Component
+/* ✅ Reusable Stat Card */
 function StatCard({ number, label }) {
   return (
     <div
       style={{
-        minWidth: "200px",
+        minWidth: "180px",
         background: "#001a33",
         border: "1px solid rgba(255,255,255,0.1)",
         borderRadius: "16px",

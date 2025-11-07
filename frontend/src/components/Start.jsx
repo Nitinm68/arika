@@ -6,13 +6,12 @@ import { FaEnvelope, FaGlobe, FaClock, FaComments } from "react-icons/fa";
 export default function Start() {
   const form = useRef();
 
-  // ✅ Hardcoded values (no .env needed)
-  const BACKEND_URL = "https://arikab2b.onrender.com";
-  const EMAILJS_SERVICE_ID = "service_ai9gdp6";
-  const EMAILJS_TEMPLATE_ID = "template_lr9qzfb";
-  const EMAILJS_PUBLIC_KEY = "yQkglhfT3mleivaQv";
+  // ✅ EmailJS + Backend setup
+  const BACKEND_URL = "http://localhost:5000";
+  const EMAILJS_SERVICE_ID = "service_9wy53h9";
+  const EMAILJS_TEMPLATE_ID = "template_dl28r05";
+  const EMAILJS_PUBLIC_KEY = "uWMq668TupgP9942q";
 
-  // ✅ Send data to backend + EmailJS
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -22,7 +21,7 @@ export default function Start() {
     console.log("Backend URL:", BACKEND_URL);
 
     try {
-      /* ✅ 1️⃣ Store data in MongoDB via backend */
+      // ✅ 1️⃣ Send data to backend
       const backendRes = await fetch(`${BACKEND_URL}/api/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,7 +35,7 @@ export default function Start() {
       const backendResult = await backendRes.json();
       console.log("Backend Response:", backendResult);
 
-      /* ✅ 2️⃣ Send email via EmailJS */
+      // ✅ 2️⃣ Send Email using EmailJS
       await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -58,12 +57,13 @@ export default function Start() {
       style={{
         width: "100%",
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #00081a 0%, #020e25 100%)",
+        background: "#121212",
         color: "#fff",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         marginTop: "40px",
+        padding: "80px 20px",
       }}
     >
       <div
@@ -78,7 +78,7 @@ export default function Start() {
         }}
       >
         {/* LEFT SIDE - FORM */}
-        <div style={{ flex: "1.4", minWidth: "350px" }}>
+        <div style={{ flex: "1.4", minWidth: "340px" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ export default function Start() {
             </h1>
           </motion.div>
 
-          {/* ✅ Form */}
+          {/* ✅ FORM SECTION */}
           <form
             ref={form}
             onSubmit={sendEmail}
@@ -133,12 +133,8 @@ export default function Start() {
               gap: "20px",
             }}
           >
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <label style={{ fontSize: "14px", color: "#a9b8cc" }}>
-                Hello, my name is:
-              </label>
+            <div style={inputGroup}>
+              <label style={labelStyle}>Hello, my name is:</label>
               <input
                 type="text"
                 name="from_name"
@@ -148,12 +144,8 @@ export default function Start() {
               />
             </div>
 
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <label style={{ fontSize: "14px", color: "#a9b8cc" }}>
-                Here is my email:
-              </label>
+            <div style={inputGroup}>
+              <label style={labelStyle}>Here is my email:</label>
               <input
                 type="email"
                 name="from_email"
@@ -163,12 +155,8 @@ export default function Start() {
               />
             </div>
 
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <label style={{ fontSize: "14px", color: "#a9b8cc" }}>
-                Tell us about your project:
-              </label>
+            <div style={inputGroup}>
+              <label style={labelStyle}>Tell us about your project:</label>
               <select
                 name="project_type"
                 style={{ ...inputStyle, color: "#a9b8cc" }}
@@ -180,13 +168,14 @@ export default function Start() {
                 <option value="Web Design">Web Design</option>
                 <option value="Branding">Branding</option>
                 <option value="SEO Optimization">SEO Optimization</option>
+                <option value="Content Creation">Content Creation</option>
+                <option value="App Development">App Development</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <label style={{ fontSize: "14px", color: "#a9b8cc" }}>
+            <div style={inputGroup}>
+              <label style={labelStyle}>
                 When do you need this project completed?
               </label>
               <input
@@ -206,9 +195,7 @@ export default function Start() {
                 gap: "8px",
               }}
             >
-              <label style={{ fontSize: "14px", color: "#a9b8cc" }}>
-                About project:
-              </label>
+              <label style={labelStyle}>About project:</label>
               <textarea
                 name="message"
                 rows="5"
@@ -224,18 +211,7 @@ export default function Start() {
             <div style={{ gridColumn: "1 / -1" }}>
               <button
                 type="submit"
-                style={{
-                  width: "100%",
-                  background: "linear-gradient(90deg, #3b9dff, #00e6e6)",
-                  border: "none",
-                  padding: "15px",
-                  borderRadius: "10px",
-                  color: "#001020",
-                  fontWeight: "700",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
+                style={submitButton}
                 onMouseOver={(e) => (e.target.style.opacity = 0.85)}
                 onMouseOut={(e) => (e.target.style.opacity = 1)}
               >
@@ -245,31 +221,88 @@ export default function Start() {
           </form>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT SIDE - INFO */}
         <div style={{ flex: "0.8", minWidth: "300px" }}>
           <h3 style={infoTitle}>Connect with us</h3>
           <p style={infoLine}>
-            <FaEnvelope color="#00bfff" /> office@arikab2b.in
+            <FaEnvelope color="#00bfff" /> info@codeorbittechnologies.com
           </p>
           <p style={infoLine}>
-            <FaComments color="#00bfff" /> +91 731 025 1337
+            <FaComments color="#00bfff" /> +91 8294220402
           </p>
 
           <h3 style={infoTitle}>Address</h3>
           <p style={infoLine}>
-            <FaGlobe color="#00bfff" /> C19, Vibhuti Khand, Gomti Nagar,
-            Lucknow, Uttar Pradesh 226010
+            <FaGlobe color="#00bfff" />
+            Second Floor, Tarunika Foods & Confectionery, Dev Raj Tower,
+            Gewalbigha, Gaya, Bihar 823001
           </p>
           <p style={infoLine}>
             <FaClock color="#00bfff" /> Monday → Saturday 09:00AM–07:00PM
           </p>
         </div>
       </div>
+
+      {/* ✅ Responsive Adjustments */}
+      <style>
+        {`
+          @media (max-width: 1024px) {
+            section#contact {
+              padding: 60px 30px;
+            }
+            h1 {
+              font-size: 40px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            section#contact {
+              flex-direction: column;
+              padding: 60px 20px;
+            }
+            h1 {
+              font-size: 32px !important;
+              text-align: center !important;
+            }
+            form {
+              display: flex !important;
+              flex-direction: column !important;
+            }
+            button[type="submit"] {
+              width: 100%;
+            }
+          }
+
+          @media (max-width: 480px) {
+            h1 {
+              font-size: 26px !important;
+              line-height: 1.4 !important;
+            }
+            input, textarea, select {
+              font-size: 14px !important;
+            }
+            .infoLine {
+              font-size: 14px !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
 
-/* ============ STYLES ============ */
+/* ================== STYLES ================== */
+const inputGroup = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
+};
+
+const labelStyle = {
+  fontSize: "14px",
+  color: "#a9b8cc",
+};
+
 const inputStyle = {
   background: "rgba(255,255,255,0.06)",
   border: "1px solid rgba(255,255,255,0.1)",
@@ -278,6 +311,19 @@ const inputStyle = {
   color: "#fff",
   outline: "none",
   fontSize: "15px",
+  transition: "0.3s",
+};
+
+const submitButton = {
+  width: "100%",
+  background: "linear-gradient(90deg, #3b9dff, #00e6e6)",
+  border: "none",
+  padding: "15px",
+  borderRadius: "10px",
+  color: "#001020",
+  fontWeight: "700",
+  fontSize: "16px",
+  cursor: "pointer",
   transition: "0.3s",
 };
 
