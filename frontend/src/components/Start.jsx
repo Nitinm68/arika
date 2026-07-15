@@ -1,54 +1,28 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaGlobe, FaClock, FaComments } from "react-icons/fa";
 
 export default function Start() {
   const form = useRef();
 
-  // ✅ EmailJS + Backend setup
-  const BACKEND_URL = "http://localhost:5000";
-  const EMAILJS_SERVICE_ID = "service_9wy53h9";
-  const EMAILJS_TEMPLATE_ID = "template_dl28r05";
-  const EMAILJS_PUBLIC_KEY = "uWMq668TupgP9942q";
-
-  const sendEmail = async (e) => {
+  // ✅ Send data via WhatsApp
+  const sendEmail = (e) => {
     e.preventDefault();
 
     const formData = new FormData(form.current);
     const data = Object.fromEntries(formData.entries());
 
-    console.log("Backend URL:", BACKEND_URL);
+    const message = `Hello, I'm interested in starting a project!
+*Name:* ${data.from_name}
+*Email:* ${data.from_email}
+*Project Type:* ${data.project_type}
+*Timeline:* ${data.timeline}
+*Message:* ${data.message}`;
 
-    try {
-      // ✅ 1️⃣ Send data to backend
-      const backendRes = await fetch(`${BACKEND_URL}/api/start`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    const whatsappUrl = `https://wa.me/917390999498?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
 
-      if (!backendRes.ok) {
-        throw new Error(`Backend error: ${backendRes.status}`);
-      }
-
-      const backendResult = await backendRes.json();
-      console.log("Backend Response:", backendResult);
-
-      // ✅ 2️⃣ Send Email using EmailJS
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        form.current,
-        EMAILJS_PUBLIC_KEY
-      );
-
-      alert("✅ Message sent & stored successfully!");
-      form.current.reset();
-    } catch (err) {
-      console.error("❌ Error in sending:", err);
-      alert("Something went wrong. Please try again later.");
-    }
+    form.current.reset();
   };
 
   return (
